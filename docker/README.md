@@ -50,3 +50,26 @@ o que vier depois do nome da imagem é um comando a ser executado, mas substitui
 - fazer a limpa em tudo
 `docker system prune`
 `docker system prune -a`
+
+- listar todas as redes
+`docker network ls`
+
+- apagar todas as redes
+`docker network prune`
+
+- inspecionar rede
+`docker network inspect bridge`
+
+- entrar em um console que está rodando em modo -dit
+`docker attach ubuntu1`
+
+- criando uma rede do tipop bridge
+`docker network create --driver bridge minharede`
+
+- rodando um container especificando a rede
+`docker run -dit --name [nome]] --network [nome da rede] [imagem]`
+
+- conectar uma imagem em uma rede
+`docker network connect minharede ubuntu3`
+
+`docker run --rm -d --name nginx --network host nginx`
