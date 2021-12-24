@@ -17,3 +17,5 @@ RUN apt-get update && \
 EXPOSE 8000
 
 ENTRYPOINT [ "php", "laravel-app/artisan", "serve" ]
+
+CMD ["--host=0.0.0.0 --port=8000"]
