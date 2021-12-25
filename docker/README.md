@@ -75,6 +75,8 @@ o que vier depois do nome da imagem é um comando a ser executado, mas substitui
 `docker run --rm -d --name nginx --network host nginx`
 
 
+- setar variaveis de ambiente
+`docker run -e VARIAVEL=valor --name [nome] [imagem]`
 
 ### Comandos Docker Compose
 
