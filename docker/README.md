@@ -5,7 +5,7 @@ anotações do curso full cycle
 
 [Colinha de docker ](https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes)
 
-### Comandos
+### Comandos Docker
 
 - inicia o container adicionando volume com -v
 `docker run --rm --name engineques -d -p 8080:80 -v /home/vitor/CursoFullCycle/docker/html/:/usr/share/nginx/html/ nginx`
@@ -73,3 +73,13 @@ o que vier depois do nome da imagem é um comando a ser executado, mas substitui
 `docker network connect minharede ubuntu3`
 
 `docker run --rm -d --name nginx --network host nginx`
+
+
+
+### Comandos Docker Compose
+
+- levanta todos os containers em modo detached e rebuidando as imagens:
+`docker-compose up -d --build`
+
+- lista todos os containers do compose
+`docker-compose ps`
