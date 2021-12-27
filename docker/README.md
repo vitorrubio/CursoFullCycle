@@ -85,3 +85,5 @@ o que vier depois do nome da imagem é um comando a ser executado, mas substitui
 
 - lista todos os containers do compose
 `docker-compose ps`
+
+
