@@ -1,0 +1,53 @@
+version: '3'
+
+services:
+
+  nginx: 
+    build:
+      context: ./nginx 
+    container_name: nginx
+    networks:
+      - node-network
+    ports:
+      - "8080:8080"
+    depends_on: 
+    - app      
+
+  app:
+    build:
+      context: ./node
+    init: true #esta instrução faz com que um processo no docker seja iniciado antes, esse processo sobe com PID = 1 e é responsável por monitorar outros processos e e não permitir que eles fiquem órfãos. Permite que o nodejs não suba com PID = 1, pois ele não pode ser terminado com kill caso isso aconteça
+    container_name: app
+    networks:
+      - node-network
+    volumes:
+      - ./node:/usr/src/app
+    tty: true
+    #ports:
+    #  - "3000:3000"
+    depends_on: 
+    - db
+
+
+  db:
+    image: mysql:5.7
+    command: --innodb-use-native-aio=0
+    container_name: db
+    restart: always
+    tty: true
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment: 
+      - MYSQL_DATABASE=nodedb
+      - MYSQL_ROOT_PASSWORD=root
+    networks: 
+      - node-network
+
+
+
+
+
+networks:
+  node-network:
+    driver: bridge
+
